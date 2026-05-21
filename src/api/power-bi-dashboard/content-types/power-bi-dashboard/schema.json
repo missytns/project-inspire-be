@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "power_bi_dashboards",
+  "info": {
+    "singularName": "power-bi-dashboard",
+    "pluralName": "power-bi-dashboards",
+    "displayName": "power-bi-dashboard"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "objective": {
+      "type": "text"
+    },
+    "journey": {
+      "type": "enumeration",
+      "enum": [
+        "Pre-Sales",
+        "Sales",
+        "After Sales",
+        "General"
+      ]
+    },
+    "workspace": {
+      "type": "enumeration",
+      "enum": [
+        "Marvel",
+        "Shield"
+      ]
+    },
+    "environment": {
+      "type": "enumeration",
+      "enum": [
+        "Operation",
+        "Development"
+      ]
+    },
+    "frequency": {
+      "type": "enumeration",
+      "enum": [
+        "Monthly",
+        "Weekly",
+        "Daily",
+        "Ad Hoc"
+      ]
+    },
+    "powerBiUrl": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
+    },
+    "dataUsage": {
+      "type": "text"
+    },
+    "businessQuestion": {
+      "type": "text"
+    }
+  }
+}

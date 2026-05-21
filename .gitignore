@@ -122,6 +122,9 @@ coverage
 ############################
 
 .env
+.env.*
+!.env.example
+
 license.txt
 exports
 .strapi
@@ -129,3 +132,9 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+.tmp/
+.cache/
+*.db
+*.sqlite
+*.sqlite3
