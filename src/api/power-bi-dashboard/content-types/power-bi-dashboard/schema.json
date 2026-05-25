@@ -12,7 +12,9 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "text"
+      "type": "text",
+      "required": true,
+      "unique": true
     },
     "objective": {
       "type": "text"

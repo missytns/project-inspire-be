@@ -551,7 +551,9 @@ export interface ApiPowerBiDashboardPowerBiDashboard
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    title: Schema.Attribute.Text;
+    title: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
