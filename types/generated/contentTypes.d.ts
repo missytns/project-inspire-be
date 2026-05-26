@@ -525,39 +525,46 @@ export interface ApiPowerBiDashboardPowerBiDashboard
     draftAndPublish: true;
   };
   attributes: {
-    businessQuestion: Schema.Attribute.Text;
+    businessQuestion: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dataUsage: Schema.Attribute.Text;
-    environment: Schema.Attribute.Enumeration<['Operation', 'Development']>;
+    dataUsage: Schema.Attribute.Text & Schema.Attribute.Required;
+    environment: Schema.Attribute.Enumeration<['Operation', 'Development']> &
+      Schema.Attribute.Required;
     frequency: Schema.Attribute.Enumeration<
       ['Monthly', 'Weekly', 'Daily', 'Ad Hoc']
-    >;
-    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    > &
+      Schema.Attribute.Required;
+    isActive: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
     journey: Schema.Attribute.Enumeration<
       ['Pre-Sales', 'Sales', 'After Sales', 'General']
-    >;
+    > &
+      Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::power-bi-dashboard.power-bi-dashboard'
     > &
       Schema.Attribute.Private;
-    objective: Schema.Attribute.Text;
-    powerBiUrl: Schema.Attribute.String;
+    objective: Schema.Attribute.Text & Schema.Attribute.Required;
+    powerBiUrl: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     thumbnail: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
-    >;
+    > &
+      Schema.Attribute.Required;
     title: Schema.Attribute.Text &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    workspace: Schema.Attribute.Enumeration<['Marvel', 'Shield']>;
+    workspace: Schema.Attribute.Enumeration<['Marvel', 'Shield']> &
+      Schema.Attribute.Required;
   };
 }
 

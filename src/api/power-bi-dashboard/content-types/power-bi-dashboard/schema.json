@@ -17,10 +17,12 @@
       "unique": true
     },
     "objective": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "journey": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "Pre-Sales",
         "Sales",
@@ -30,6 +32,7 @@
     },
     "workspace": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "Marvel",
         "Shield"
@@ -37,6 +40,7 @@
     },
     "environment": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "Operation",
         "Development"
@@ -44,6 +48,7 @@
     },
     "frequency": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "Monthly",
         "Weekly",
@@ -52,11 +57,13 @@
       ]
     },
     "powerBiUrl": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "thumbnail": {
       "type": "media",
       "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
@@ -66,13 +73,16 @@
     },
     "isActive": {
       "type": "boolean",
+      "required": true,
       "default": true
     },
     "dataUsage": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "businessQuestion": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   }
 }
