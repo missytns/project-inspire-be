@@ -16,15 +16,22 @@ export default factories.createCoreController('api::dashboard-pin.dashboard-pin'
       where: { user: { id: user.id } },
       populate: { dashboard: true },
     });
+    const validPins = pins.filter((pin) => pin.dashboard);
+    const stalePins = pins.filter((pin) => !pin.dashboard);
+
+    await Promise.all(
+      stalePins.map((pin) =>
+        strapi.db.query('api::dashboard-pin.dashboard-pin').delete({
+          where: { id: pin.id },
+        })
+      )
+    );
 
     ctx.body = {
-      data: pins
-        .map((pin) => pin.dashboard)
-        .filter(Boolean)
-        .map((dashboard) => ({
-          id: dashboard.id,
-          documentId: dashboard.documentId,
-        })),
+      data: validPins.map((pin) => ({
+        id: pin.dashboard.id,
+        documentId: pin.dashboard.documentId,
+      })),
     };
   },
 
@@ -70,11 +77,22 @@ export default factories.createCoreController('api::dashboard-pin.dashboard-pin'
       return;
     }
 
-    const pinCount = await strapi.db.query('api::dashboard-pin.dashboard-pin').count({
+    const pins = await strapi.db.query('api::dashboard-pin.dashboard-pin').findMany({
       where: { user: { id: user.id } },
+      populate: { dashboard: true },
     });
+    const validPins = pins.filter((pin) => pin.dashboard);
+    const stalePins = pins.filter((pin) => !pin.dashboard);
 
-    if (pinCount >= 4) {
+    await Promise.all(
+      stalePins.map((pin) =>
+        strapi.db.query('api::dashboard-pin.dashboard-pin').delete({
+          where: { id: pin.id },
+        })
+      )
+    );
+
+    if (validPins.length >= 4) {
       return ctx.badRequest('Maximum 4 pinned dashboards allowed.');
     }
 
