@@ -16,10 +16,6 @@
       "required": true,
       "unique": true
     },
-    "objective": {
-      "type": "text",
-      "required": true
-    },
     "journey": {
       "type": "enumeration",
       "required": true,
@@ -76,12 +72,15 @@
       "required": true,
       "default": true
     },
-    "dataUsage": {
-      "type": "text",
+    "objective": {
+      "type": "blocks",
       "required": true
     },
     "businessQuestion": {
-      "type": "text",
+      "type": "blocks"
+    },
+    "dataUsage": {
+      "type": "blocks",
       "required": true
     }
   }

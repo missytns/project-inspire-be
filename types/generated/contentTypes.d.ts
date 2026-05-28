@@ -525,11 +525,11 @@ export interface ApiPowerBiDashboardPowerBiDashboard
     draftAndPublish: true;
   };
   attributes: {
-    businessQuestion: Schema.Attribute.Text & Schema.Attribute.Required;
+    businessQuestion: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    dataUsage: Schema.Attribute.Text & Schema.Attribute.Required;
+    dataUsage: Schema.Attribute.Blocks & Schema.Attribute.Required;
     environment: Schema.Attribute.Enumeration<['Operation', 'Development']> &
       Schema.Attribute.Required;
     frequency: Schema.Attribute.Enumeration<
@@ -549,7 +549,7 @@ export interface ApiPowerBiDashboardPowerBiDashboard
       'api::power-bi-dashboard.power-bi-dashboard'
     > &
       Schema.Attribute.Private;
-    objective: Schema.Attribute.Text & Schema.Attribute.Required;
+    objective: Schema.Attribute.Blocks & Schema.Attribute.Required;
     powerBiUrl: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     thumbnail: Schema.Attribute.Media<
